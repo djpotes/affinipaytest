@@ -1,3 +1,3 @@
-Run
-npm i
-npx playwright test
+* Run
+* npm i
+* npx playwright test
