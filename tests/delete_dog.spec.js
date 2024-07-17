@@ -28,4 +28,12 @@ test.describe.only("Validate Delete Dog", () => {
     let responseBody = await response.json();
     validateResponseSchema(responseBody, "deleteResponse.json");
   });
+
+  test("Not Found", async ({ request }) => {
+    const response = await request.delete(
+      `http://127.0.0.1:2000/dogs/${dogId}`
+    );
+    await expect(response.ok()).toBeFalsy();
+    expect(response.status()).toBe(404);
+  });
 });

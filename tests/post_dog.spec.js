@@ -90,6 +90,14 @@ test.describe.only("Validate Post Dog", () => {
     expect(response.status()).toBe(422);
   });
 
+  test("Invalid Format", async ({ request }) => {
+    const response = await request.post(`http://127.0.0.1:2000/dogs`, {
+      data: [],
+    });
+    await expect(response.ok()).toBeFalsy();
+    expect(response.status()).toBe(500);
+  });
+
   test.afterAll(async ({ request }) => {
     await request.delete(`http://127.0.0.1:2000/dogs/${dogId}`);
   });

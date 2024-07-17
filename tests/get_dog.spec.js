@@ -27,6 +27,12 @@ test.describe.only("Validate Get Dog", () => {
     validateResponseSchema(responseBody, "getResponse.json");
   });
 
+  test("Not Found", async ({ request }) => {
+    const response = await request.get(`http://127.0.0.1:2000/dogs/0`);
+    await expect(response.ok()).toBeFalsy();
+    expect(response.status()).toBe(404);
+  });
+
   test.afterAll(async ({ request }) => {
     await request.delete(`http://127.0.0.1:2000/dogs/${dogId}`);
   });
