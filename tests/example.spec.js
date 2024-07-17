@@ -1,7 +1,7 @@
 const { test, expect } = require("@playwright/test");
 const {
   validateResponseSchema,
-} = require("../validatioons/validateResponseSchema");
+} = require("../validations/validateResponseSchema");
 
 test.describe.configure({ mode: "serial" });
 test.describe.only("Validate Dogs API", () => {
